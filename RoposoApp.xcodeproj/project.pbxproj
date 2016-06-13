@@ -9,19 +9,23 @@
 /* Begin PBXBuildFile section */
 		CB728D231D0EA8C0008C8D5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D221D0EA8C0008C8D5F /* main.m */; };
 		CB728D2C1D0EA8C0008C8D5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB728D2A1D0EA8C0008C8D5F /* Main.storyboard */; };
-		CB728D2F1D0EA8C0008C8D5F /* RoposoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB728D2D1D0EA8C0008C8D5F /* RoposoApp.xcdatamodeld */; };
 		CB728D311D0EA8C0008C8D5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB728D301D0EA8C0008C8D5F /* Assets.xcassets */; };
 		CB728D341D0EA8C0008C8D5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB728D321D0EA8C0008C8D5F /* LaunchScreen.storyboard */; };
 		CB728D3C1D0EA950008C8D5F /* stories.json in Resources */ = {isa = PBXBuildFile; fileRef = CB728D3B1D0EA950008C8D5F /* stories.json */; };
 		CB728D451D0EA963008C8D5F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D411D0EA963008C8D5F /* AppDelegate.m */; };
 		CB728D481D0EA982008C8D5F /* RAHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D471D0EA982008C8D5F /* RAHomeViewController.m */; };
+		CB728D4B1D0EB122008C8D5F /* RADatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D4A1D0EB122008C8D5F /* RADatabaseManager.m */; };
+		CB728D4F1D0EB205008C8D5F /* RoposoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB728D4D1D0EB205008C8D5F /* RoposoApp.xcdatamodeld */; };
+		CB728D541D0EB88F008C8D5F /* RAUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D511D0EB88F008C8D5F /* RAUser+CoreDataProperties.m */; };
+		CB728D551D0EB88F008C8D5F /* RAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D531D0EB88F008C8D5F /* RAUser.m */; };
+		CB728D5A1D0EB8AC008C8D5F /* RAStory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D571D0EB8AC008C8D5F /* RAStory+CoreDataProperties.m */; };
+		CB728D5B1D0EB8AC008C8D5F /* RAStory.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D591D0EB8AC008C8D5F /* RAStory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CB728D1E1D0EA8C0008C8D5F /* RoposoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoposoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB728D221D0EA8C0008C8D5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB728D2B1D0EA8C0008C8D5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CB728D2E1D0EA8C0008C8D5F /* RoposoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RoposoApp.xcdatamodel; sourceTree = "<group>"; };
 		CB728D301D0EA8C0008C8D5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB728D331D0EA8C0008C8D5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB728D351D0EA8C0008C8D5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -30,6 +34,17 @@
 		CB728D411D0EA963008C8D5F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CB728D461D0EA982008C8D5F /* RAHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAHomeViewController.h; sourceTree = "<group>"; };
 		CB728D471D0EA982008C8D5F /* RAHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAHomeViewController.m; sourceTree = "<group>"; };
+		CB728D491D0EB122008C8D5F /* RADatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RADatabaseManager.h; sourceTree = "<group>"; };
+		CB728D4A1D0EB122008C8D5F /* RADatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RADatabaseManager.m; sourceTree = "<group>"; };
+		CB728D4E1D0EB205008C8D5F /* RoposoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RoposoApp.xcdatamodel; sourceTree = "<group>"; };
+		CB728D501D0EB88F008C8D5F /* RAUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RAUser+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CB728D511D0EB88F008C8D5F /* RAUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RAUser+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CB728D521D0EB88F008C8D5F /* RAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAUser.h; sourceTree = "<group>"; };
+		CB728D531D0EB88F008C8D5F /* RAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAUser.m; sourceTree = "<group>"; };
+		CB728D561D0EB8AC008C8D5F /* RAStory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RAStory+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CB728D571D0EB8AC008C8D5F /* RAStory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RAStory+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CB728D581D0EB8AC008C8D5F /* RAStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAStory.h; sourceTree = "<group>"; };
+		CB728D591D0EB8AC008C8D5F /* RAStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAStory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +82,6 @@
 				CB728D301D0EA8C0008C8D5F /* Assets.xcassets */,
 				CB728D321D0EA8C0008C8D5F /* LaunchScreen.storyboard */,
 				CB728D351D0EA8C0008C8D5F /* Info.plist */,
-				CB728D2D1D0EA8C0008C8D5F /* RoposoApp.xcdatamodeld */,
 				CB728D3B1D0EA950008C8D5F /* stories.json */,
 				CB728D211D0EA8C0008C8D5F /* Supporting Files */,
 			);
@@ -122,6 +136,17 @@
 		CB728D431D0EA963008C8D5F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB728D4D1D0EB205008C8D5F /* RoposoApp.xcdatamodeld */,
+				CB728D491D0EB122008C8D5F /* RADatabaseManager.h */,
+				CB728D4A1D0EB122008C8D5F /* RADatabaseManager.m */,
+				CB728D501D0EB88F008C8D5F /* RAUser+CoreDataProperties.h */,
+				CB728D511D0EB88F008C8D5F /* RAUser+CoreDataProperties.m */,
+				CB728D521D0EB88F008C8D5F /* RAUser.h */,
+				CB728D531D0EB88F008C8D5F /* RAUser.m */,
+				CB728D561D0EB8AC008C8D5F /* RAStory+CoreDataProperties.h */,
+				CB728D571D0EB8AC008C8D5F /* RAStory+CoreDataProperties.m */,
+				CB728D581D0EB8AC008C8D5F /* RAStory.h */,
+				CB728D591D0EB8AC008C8D5F /* RAStory.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,9 +229,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB728D4F1D0EB205008C8D5F /* RoposoApp.xcdatamodeld in Sources */,
 				CB728D481D0EA982008C8D5F /* RAHomeViewController.m in Sources */,
-				CB728D2F1D0EA8C0008C8D5F /* RoposoApp.xcdatamodeld in Sources */,
+				CB728D4B1D0EB122008C8D5F /* RADatabaseManager.m in Sources */,
+				CB728D541D0EB88F008C8D5F /* RAUser+CoreDataProperties.m in Sources */,
+				CB728D551D0EB88F008C8D5F /* RAUser.m in Sources */,
 				CB728D231D0EA8C0008C8D5F /* main.m in Sources */,
+				CB728D5B1D0EB8AC008C8D5F /* RAStory.m in Sources */,
+				CB728D5A1D0EB8AC008C8D5F /* RAStory+CoreDataProperties.m in Sources */,
 				CB728D451D0EA963008C8D5F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,12 +390,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CB728D2D1D0EA8C0008C8D5F /* RoposoApp.xcdatamodeld */ = {
+		CB728D4D1D0EB205008C8D5F /* RoposoApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CB728D2E1D0EA8C0008C8D5F /* RoposoApp.xcdatamodel */,
+				CB728D4E1D0EB205008C8D5F /* RoposoApp.xcdatamodel */,
 			);
-			currentVersion = CB728D2E1D0EA8C0008C8D5F /* RoposoApp.xcdatamodel */;
+			currentVersion = CB728D4E1D0EB205008C8D5F /* RoposoApp.xcdatamodel */;
 			path = RoposoApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
