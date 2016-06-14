@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RAImageViewerView : UIImageView
+@interface RAImageViewerView : UIView
+
++ (void)showImageWithUrl:(NSString *)imageUrl;
 
 @end

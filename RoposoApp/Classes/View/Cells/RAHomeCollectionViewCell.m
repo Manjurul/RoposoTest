@@ -64,6 +64,9 @@
         [_likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_likeButton setBackgroundColor:[UIColor blueColor]];
     }
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTapped:)];
+    [_postImageView addGestureRecognizer:tapGesture];
 }
 
 #pragma mark - Button Actions
@@ -78,6 +81,14 @@
 
 - (IBAction)action_comment:(id)sender {
     
+}
+
+#pragma mark - Gestures
+
+- (void)imageViewTapped:(UITapGestureRecognizer *)sender {
+    if(self.delegate && [self.delegate respondsToSelector:@selector(homeCell:didSelectImageView:)]) {
+        [self.delegate homeCell:self didSelectImageView:(RAWebImageView *)sender.view];
+    }
 }
 
 @end

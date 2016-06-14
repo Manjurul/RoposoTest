@@ -9,10 +9,11 @@
 #import "RAHomeViewController.h"
 #import "RAStoryViewController.h"
 #import "RAHomeCollectionViewCell.h"
+#import "RAImageViewerView.h"
 #import "RADatabaseManager.h"
 #import "RAStory.h"
 
-@interface RAHomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource> {
+@interface RAHomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, RAHomeCollectionViewCellDelegate> {
     IBOutlet UICollectionView*              _storyCollectionView;
 }
 
@@ -69,8 +70,19 @@
     cell.layer.shadowOffset = CGSizeZero;
     cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
     cell.layer.shouldRasterize = YES;
+    cell.delegate = self;
     [cell loadStory:self.stories[indexPath.row]];
     return cell;
+}
+
+
+#pragma mark - Collection View Cell Delegate
+
+
+- (void)homeCell:(RAHomeCollectionViewCell *)cell didSelectImageView:(RAWebImageView *)imageView {
+    NSIndexPath *indexPath = [_storyCollectionView indexPathForCell:cell];
+    RAStory *story = self.stories[indexPath.row];
+    [RAImageViewerView showImageWithUrl:story.imageUrl];
 }
 
 

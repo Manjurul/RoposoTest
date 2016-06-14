@@ -9,6 +9,7 @@
 #import "RAStoryViewController.h"
 #import "RADatabaseManager.h"
 #import "RAWebImageView.h"
+#import "RAImageViewerView.h"
 #import "RAUser.h"
 #import "RAStory.h"
 
@@ -73,6 +74,9 @@
                 [_likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 [_likeButton setBackgroundColor:[UIColor blueColor]];
             }
+            
+            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTapped:)];
+            [_postImageView addGestureRecognizer:tapGesture];
         }
     }
 }
@@ -105,6 +109,13 @@
 
 - (IBAction)action_comment:(id)sender {
     
+}
+
+#pragma mark - Gestures
+
+- (void)imageViewTapped:(UITapGestureRecognizer *)sender {
+    RAStory *story = [[RADatabaseManager sharedManager] storyForId:self.storyId];
+    [RAImageViewerView showImageWithUrl:story.imageUrl];
 }
 
 @end

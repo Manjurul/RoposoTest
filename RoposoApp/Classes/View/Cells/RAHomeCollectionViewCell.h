@@ -8,9 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@class RAStory;
+@class RAStory, RAWebImageView;
+@protocol RAHomeCollectionViewCellDelegate;
+
 @interface RAHomeCollectionViewCell : UICollectionViewCell
 
+@property(nonatomic, assign) id<RAHomeCollectionViewCellDelegate> delegate;
+
 - (void)loadStory:(RAStory *)story;
+
+@end
+
+
+
+@protocol RAHomeCollectionViewCellDelegate <NSObject>
+
+@optional
+
+- (void)homeCell:(RAHomeCollectionViewCell *)cell didSelectImageView:(RAWebImageView *)imageView;
 
 @end
