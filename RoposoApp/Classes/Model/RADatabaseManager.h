@@ -22,10 +22,14 @@
 
 #pragma mark - Users
 
+- (void)follow:(BOOL)follow
+    userWithId:(NSString *)userId;
 - (RAUser*)userWithId:(NSString *)iD;
 
 #pragma mark - Stories
 
+- (void)like:(BOOL)like
+ storyWithId:(NSString *)storyId;
 - (NSArray<RAStory *>*)allStories;
 - (RAStory *)storyForId:(NSString *)iD;
 

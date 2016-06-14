@@ -15,7 +15,7 @@
 
 @property(nonatomic, assign) id<RAHomeCollectionViewCellDelegate> delegate;
 
-- (void)loadStory:(RAStory *)story;
+- (void)loadStoryWithId:(NSString *)storyId;
 
 @end
 
@@ -26,5 +26,7 @@
 @optional
 
 - (void)homeCell:(RAHomeCollectionViewCell *)cell didSelectImageView:(RAWebImageView *)imageView;
+- (void)homeCell:(RAHomeCollectionViewCell *)cell didSelectFollow:(BOOL)follow;
+- (void)homeCell:(RAHomeCollectionViewCell *)cell didSelectLike:(BOOL)like;
 
 @end

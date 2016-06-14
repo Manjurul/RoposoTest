@@ -161,6 +161,26 @@ static RADatabaseManager *databaseManager = nil;
     [self saveContext];
 }
 
+- (void)follow:(BOOL)follow
+    userWithId:(NSString *)userId {
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"RAUser" inManagedObjectContext:self.managedObjectContext]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"(iD == %@)", userId];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    RAUser *user = nil;
+    
+    if (results.count) {
+        user = [results lastObject];
+        user.isFollowing = follow ? @1 : @0;
+    }
+    [self saveContext];
+}
+
 
 - (RAUser*)userWithId:(NSString *)iD {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -216,6 +236,26 @@ static RADatabaseManager *databaseManager = nil;
         VALIDATE_NUMBER_AND_ASSIGN(story.isLiked, @"like_flag");
         VALIDATE_NUMBER_AND_ASSIGN(story.likeCount, @"likes_count");
         VALIDATE_NUMBER_AND_ASSIGN(story.commentCount, @"comment_count");
+    }
+    [self saveContext];
+}
+
+- (void)like:(BOOL)like
+ storyWithId:(NSString *)storyId {
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"RAStory" inManagedObjectContext:self.managedObjectContext]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"(iD == %@)", storyId];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    RAStory *story = nil;
+    
+    if (results.count) {
+        story = [results lastObject];
+        story.isLiked = like ? @1 : @0;
     }
     [self saveContext];
 }

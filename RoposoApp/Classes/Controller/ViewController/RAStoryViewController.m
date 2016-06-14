@@ -8,6 +8,7 @@
 
 #import "RAStoryViewController.h"
 #import "RADatabaseManager.h"
+#import "RAStoryManager.h"
 #import "RAWebImageView.h"
 #import "RAImageViewerView.h"
 #import "RAUser.h"
@@ -45,12 +46,12 @@
         if(story) {
             RAUser *creator = [[RADatabaseManager sharedManager] userWithId:story.creator];
             [_profileImageView loadImageWithUrl:creator.image
-                                    placeHolder:@""
+                                    placeHolder:@"placeholder"
                                  withCompletion:^(BOOL success, NSError *error) {
                                      
                                  }];
             [_postImageView loadImageWithUrl:story.imageUrl
-                                 placeHolder:@""
+                                 placeHolder:@"placeholder"
                               withCompletion:^(BOOL success, NSError *error) {
                                   
                               }];
@@ -66,16 +67,13 @@
             [_commentCountLabel setText:[NSString stringWithFormat:@"(%ld)", [story.commentCount longValue]]];
             
             if([creator.isFollowing boolValue]) {
-                [_followButton setTitle:@"Following" forState:UIControlStateNormal];
-                [_followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                [_followButton setBackgroundColor:[UIColor blueColor]];
+                [_followButton setSelected:YES];
             }
             if([story.isLiked boolValue]) {
-                [_likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                [_likeButton setBackgroundColor:[UIColor blueColor]];
+                [_likeButton setSelected:YES];
             }
             
-            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTapped:)];
+            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gesture_imageViewTapped:)];
             [_postImageView addGestureRecognizer:tapGesture];
         }
     }
@@ -100,11 +98,28 @@
 #pragma mark - Button Actions
 
 - (IBAction)action_follow:(id)sender {
-    
+    UIButton *followButton = (UIButton *)sender;
+    followButton.selected = !followButton.selected;
+    if(self.storyId) {
+        RAStory *story = [[RADatabaseManager sharedManager] storyForId:self.storyId];
+        if(story) {
+            RAUser *creator = [[RADatabaseManager sharedManager] userWithId:story.creator];
+            [RAStoryManager follow:followButton.selected
+                        userWithId:creator.iD];
+        }
+    }
 }
 
 - (IBAction)action_like:(id)sender {
-    
+    UIButton *likeButton = (UIButton *)sender;
+    likeButton.selected = !likeButton.selected;
+    if(self.storyId) {
+        RAStory *story = [[RADatabaseManager sharedManager] storyForId:self.storyId];
+        if(story) {
+            [RAStoryManager like:likeButton.selected
+                     storyWithId:story.iD];
+        }
+    }
 }
 
 - (IBAction)action_comment:(id)sender {
@@ -113,7 +128,7 @@
 
 #pragma mark - Gestures
 
-- (void)imageViewTapped:(UITapGestureRecognizer *)sender {
+- (void)gesture_imageViewTapped:(UITapGestureRecognizer *)sender {
     RAStory *story = [[RADatabaseManager sharedManager] storyForId:self.storyId];
     [RAImageViewerView showImageWithUrl:story.imageUrl];
 }

@@ -42,8 +42,10 @@ static NSCache*         _imageCache = nil;
                                                  if(data && !error) {
                                                      dispatch_async(dispatch_get_main_queue(), ^{
                                                          UIImage *image = [UIImage imageWithData:data];
-                                                         self.image = image;
-                                                         [_imageCache setObject:image forKey:imageUrl];
+                                                         if(image) {
+                                                             self.image = image;
+                                                             [_imageCache setObject:image forKey:imageUrl];
+                                                         }
                                                      });
                                                      completion(YES, nil);
                                                  }

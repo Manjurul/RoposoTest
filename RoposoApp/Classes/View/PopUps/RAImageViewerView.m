@@ -33,7 +33,7 @@
     [self addSubview:imageView];
     [imageView setContentMode:UIViewContentModeScaleAspectFit];
     [imageView loadImageWithUrl:imageUrl
-                    placeHolder:@""
+                    placeHolder:@"placeholder"
                  withCompletion:^(BOOL success, NSError *error) {
                      
                  }];

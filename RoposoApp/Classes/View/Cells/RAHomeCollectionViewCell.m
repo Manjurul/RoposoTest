@@ -11,6 +11,7 @@
 #import "RAWebImageView.h"
 #import "RAUser.h"
 #import "RAStory.h"
+#import "RAConstants.h"
 
 @interface RAHomeCollectionViewCell () {
     IBOutlet RAWebImageView*            _profileImageView;
@@ -29,21 +30,37 @@
     IBOutlet UIButton*                  _commentButton;
 }
 
+@property(nonatomic, strong) NSString *storyId;
+
 @end
 
 @implementation RAHomeCollectionViewCell
 
 #pragma mark - Load
 
-- (void)loadStory:(RAStory *)story {
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notification_followed:)
+                                                 name:k_FollowedNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notification_liked:)
+                                                 name:k_LikedNotification
+                                               object:nil];
+}
+
+- (void)loadStoryWithId:(NSString *)storyId {
+    self.storyId = storyId;
+    RAStory *story = [[RADatabaseManager sharedManager] storyForId:self.storyId];
     RAUser *creator = [[RADatabaseManager sharedManager] userWithId:story.creator];
     [_profileImageView loadImageWithUrl:creator.image
-                            placeHolder:@""
+                            placeHolder:@"placeholder"
                          withCompletion:^(BOOL success, NSError *error) {
                              
                          }];
     [_postImageView loadImageWithUrl:story.imageUrl
-                         placeHolder:@""
+                         placeHolder:@"placeholder"
                       withCompletion:^(BOOL success, NSError *error) {
                           
                       }];
@@ -54,29 +71,34 @@
     [_verbLabel setText:story.verb];
     [_likeCountLabel setText:[NSString stringWithFormat:@"(%ld)", [story.likeCount longValue]]];
     [_commentCountLabel setText:[NSString stringWithFormat:@"(%ld)", [story.commentCount longValue]]];
-        
+    
     if([creator.isFollowing boolValue]) {
-        [_followButton setTitle:@"Following" forState:UIControlStateNormal];
-        [_followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_followButton setBackgroundColor:[UIColor blueColor]];
+        [_followButton setSelected:YES];
     }
     if([story.isLiked boolValue]) {
-        [_likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_likeButton setBackgroundColor:[UIColor blueColor]];
+        [_likeButton setSelected:YES];
     }
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTapped:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gesture_imageViewTapped:)];
     [_postImageView addGestureRecognizer:tapGesture];
 }
 
 #pragma mark - Button Actions
 
 - (IBAction)action_follow:(id)sender {
-    
+    UIButton *followButton = (UIButton *)sender;
+    followButton.selected = !followButton.selected;
+    if(self.delegate && [self.delegate respondsToSelector:@selector(homeCell:didSelectFollow:)]) {
+        [self.delegate homeCell:self didSelectFollow:followButton.selected];
+    }
 }
 
 - (IBAction)action_like:(id)sender {
-    
+    UIButton *likeButton = (UIButton *)sender;
+    likeButton.selected = !likeButton.selected;
+    if(self.delegate && [self.delegate respondsToSelector:@selector(homeCell:didSelectLike:)]) {
+        [self.delegate homeCell:self didSelectLike:likeButton.selected];
+    }
 }
 
 - (IBAction)action_comment:(id)sender {
@@ -85,9 +107,29 @@
 
 #pragma mark - Gestures
 
-- (void)imageViewTapped:(UITapGestureRecognizer *)sender {
+- (void)gesture_imageViewTapped:(UITapGestureRecognizer *)sender {
     if(self.delegate && [self.delegate respondsToSelector:@selector(homeCell:didSelectImageView:)]) {
         [self.delegate homeCell:self didSelectImageView:(RAWebImageView *)sender.view];
+    }
+}
+
+#pragma mark - Gestures
+
+- (void)notification_followed:(NSNotification *)notification {
+    NSString *userId = notification.userInfo[k_userId];
+    RAStory *story = [[RADatabaseManager sharedManager] storyForId:self.storyId];
+    RAUser *creator = [[RADatabaseManager sharedManager] userWithId:story.creator];
+    if([creator.iD isEqualToString:userId]) {
+        NSNumber *status = notification.userInfo[k_status];
+        _followButton.selected = [status boolValue];
+    }
+}
+
+- (void)notification_liked:(NSNotification *)notification {
+    NSString *storyId = notification.userInfo[k_storyId];
+    if([self.storyId isEqualToString:storyId]) {
+        NSNumber *status = notification.userInfo[k_status];
+        _likeButton.selected = [status boolValue];
     }
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CB3589391D1007400066B0F2 /* RAStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3589381D1007400066B0F2 /* RAStoryViewController.m */; };
+		CB5003C41D1078F100847EA3 /* RAStoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5003C31D1078F100847EA3 /* RAStoryManager.m */; };
 		CB728D231D0EA8C0008C8D5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D221D0EA8C0008C8D5F /* main.m */; };
 		CB728D2C1D0EA8C0008C8D5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB728D2A1D0EA8C0008C8D5F /* Main.storyboard */; };
 		CB728D311D0EA8C0008C8D5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB728D301D0EA8C0008C8D5F /* Assets.xcassets */; };
@@ -29,7 +30,9 @@
 /* Begin PBXFileReference section */
 		CB3589371D1007400066B0F2 /* RAStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAStoryViewController.h; sourceTree = "<group>"; };
 		CB3589381D1007400066B0F2 /* RAStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAStoryViewController.m; sourceTree = "<group>"; };
-		CB728D1E1D0EA8C0008C8D5F /* RoposoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoposoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB5003C21D1078F100847EA3 /* RAStoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAStoryManager.h; sourceTree = "<group>"; };
+		CB5003C31D1078F100847EA3 /* RAStoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAStoryManager.m; sourceTree = "<group>"; };
+		CB728D1E1D0EA8C0008C8D5F /* Roposo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roposo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB728D221D0EA8C0008C8D5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB728D2B1D0EA8C0008C8D5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB728D301D0EA8C0008C8D5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,7 +85,7 @@
 		CB728D1F1D0EA8C0008C8D5F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CB728D1E1D0EA8C0008C8D5F /* RoposoApp.app */,
+				CB728D1E1D0EA8C0008C8D5F /* Roposo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,6 +166,8 @@
 				CB728D581D0EB8AC008C8D5F /* RAStory.h */,
 				CB728D591D0EB8AC008C8D5F /* RAStory.m */,
 				CB728D5C1D0EBCD7008C8D5F /* RAConstants.h */,
+				CB5003C21D1078F100847EA3 /* RAStoryManager.h */,
+				CB5003C31D1078F100847EA3 /* RAStoryManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,7 +226,7 @@
 			);
 			name = RoposoApp;
 			productName = RoposoApp;
-			productReference = CB728D1E1D0EA8C0008C8D5F /* RoposoApp.app */;
+			productReference = CB728D1E1D0EA8C0008C8D5F /* Roposo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -277,6 +282,7 @@
 			files = (
 				CB728D4F1D0EB205008C8D5F /* RoposoApp.xcdatamodeld in Sources */,
 				CB3589391D1007400066B0F2 /* RAStoryViewController.m in Sources */,
+				CB5003C41D1078F100847EA3 /* RAStoryManager.m in Sources */,
 				CB843A2F1D102F730002E074 /* RAImageViewerView.m in Sources */,
 				CB728D481D0EA982008C8D5F /* RAHomeViewController.m in Sources */,
 				CB728D4B1D0EB122008C8D5F /* RADatabaseManager.m in Sources */,
@@ -400,9 +406,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RoposoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.roposo.RoposoApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Roposo;
 			};
 			name = Debug;
 		};
@@ -411,9 +418,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RoposoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.roposo.RoposoApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Roposo;
 			};
 			name = Release;
 		};

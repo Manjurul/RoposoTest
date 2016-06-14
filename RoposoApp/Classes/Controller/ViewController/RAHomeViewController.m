@@ -11,7 +11,9 @@
 #import "RAHomeCollectionViewCell.h"
 #import "RAImageViewerView.h"
 #import "RADatabaseManager.h"
+#import "RAStoryManager.h"
 #import "RAStory.h"
+#import "RAUser.h"
 
 @interface RAHomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, RAHomeCollectionViewCellDelegate> {
     IBOutlet UICollectionView*              _storyCollectionView;
@@ -32,6 +34,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [_storyCollectionView setFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)];
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)_storyCollectionView.collectionViewLayout;
+    [flowLayout setItemSize:CGSizeMake(self.view.frame.size.width - 20.0f, 359.0f)];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -71,7 +80,9 @@
     cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
     cell.layer.shouldRasterize = YES;
     cell.delegate = self;
-    [cell loadStory:self.stories[indexPath.row]];
+    
+    RAStory *story = self.stories[indexPath.row];
+    [cell loadStoryWithId:story.iD];
     return cell;
 }
 
@@ -83,6 +94,21 @@
     NSIndexPath *indexPath = [_storyCollectionView indexPathForCell:cell];
     RAStory *story = self.stories[indexPath.row];
     [RAImageViewerView showImageWithUrl:story.imageUrl];
+}
+
+- (void)homeCell:(RAHomeCollectionViewCell *)cell didSelectFollow:(BOOL)follow {
+    NSIndexPath *indexPath = [_storyCollectionView indexPathForCell:cell];
+    RAStory *story = self.stories[indexPath.row];
+    RAUser *creator = [[RADatabaseManager sharedManager] userWithId:story.creator];
+    [RAStoryManager follow:follow
+                userWithId:creator.iD];
+}
+
+- (void)homeCell:(RAHomeCollectionViewCell *)cell didSelectLike:(BOOL)like {
+    NSIndexPath *indexPath = [_storyCollectionView indexPathForCell:cell];
+    RAStory *story = self.stories[indexPath.row];
+    [RAStoryManager like:like
+             storyWithId:story.iD];
 }
 
 

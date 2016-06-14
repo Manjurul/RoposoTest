@@ -7,6 +7,7 @@
 //
 
 
+//Validations
 
 #define VALIDATE_STRING_AND_ASSIGN(var, key) {    \
 id aValue = [theDict valueForKey:key]; \
@@ -36,3 +37,17 @@ var = [NSDate dateWithTimeIntervalSince1970:[aValue doubleValue]];   \
 var = [NSDate date];  \
 }   \
 }
+
+
+//Notifications
+
+#define k_FollowedNotification              @"followedNotification"
+#define k_LikedNotification                 @"likedNotification"
+
+//Notification Keys
+
+#define k_userId                            @"userId"
+#define k_storyId                           @"storyId"
+#define k_status                            @"status"
+
+
