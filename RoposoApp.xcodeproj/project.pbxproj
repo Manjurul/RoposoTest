@@ -23,6 +23,7 @@
 		CB728D5B1D0EB8AC008C8D5F /* RAStory.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D591D0EB8AC008C8D5F /* RAStory.m */; };
 		CB728D601D0EDD2C008C8D5F /* RAHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D5F1D0EDD2C008C8D5F /* RAHomeCollectionViewCell.m */; };
 		CB728D641D0EDDAD008C8D5F /* RAWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D631D0EDDAD008C8D5F /* RAWebImageView.m */; };
+		CB843A2F1D102F730002E074 /* RAImageViewerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB843A2E1D102F730002E074 /* RAImageViewerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		CB728D5F1D0EDD2C008C8D5F /* RAHomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAHomeCollectionViewCell.m; sourceTree = "<group>"; };
 		CB728D621D0EDDAD008C8D5F /* RAWebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAWebImageView.h; sourceTree = "<group>"; };
 		CB728D631D0EDDAD008C8D5F /* RAWebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAWebImageView.m; sourceTree = "<group>"; };
+		CB843A2D1D102F730002E074 /* RAImageViewerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAImageViewerView.h; sourceTree = "<group>"; };
+		CB843A2E1D102F730002E074 /* RAImageViewerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAImageViewerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,7 @@
 			children = (
 				CB728D5D1D0ED3FA008C8D5F /* Cells */,
 				CB728D611D0EDD7F008C8D5F /* Images */,
+				CB843A2C1D102F360002E074 /* PopUps */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -189,6 +193,15 @@
 				CB728D631D0EDDAD008C8D5F /* RAWebImageView.m */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		CB843A2C1D102F360002E074 /* PopUps */ = {
+			isa = PBXGroup;
+			children = (
+				CB843A2D1D102F730002E074 /* RAImageViewerView.h */,
+				CB843A2E1D102F730002E074 /* RAImageViewerView.m */,
+			);
+			path = PopUps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +277,7 @@
 			files = (
 				CB728D4F1D0EB205008C8D5F /* RoposoApp.xcdatamodeld in Sources */,
 				CB3589391D1007400066B0F2 /* RAStoryViewController.m in Sources */,
+				CB843A2F1D102F730002E074 /* RAImageViewerView.m in Sources */,
 				CB728D481D0EA982008C8D5F /* RAHomeViewController.m in Sources */,
 				CB728D4B1D0EB122008C8D5F /* RADatabaseManager.m in Sources */,
 				CB728D541D0EB88F008C8D5F /* RAUser+CoreDataProperties.m in Sources */,

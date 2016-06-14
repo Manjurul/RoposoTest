@@ -232,4 +232,22 @@ static RADatabaseManager *databaseManager = nil;
     return results;
 }
 
+
+- (RAStory *)storyForId:(NSString *)iD
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"RAStory" inManagedObjectContext:self.managedObjectContext]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"(iD == %@)", iD];
+    [request setPredicate:predicate];
+    [request setReturnsObjectsAsFaults:NO];
+    
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if(results.count) {
+        return [results firstObject];
+    }
+    return nil;
+}
+
 @end

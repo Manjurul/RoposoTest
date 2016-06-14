@@ -27,5 +27,6 @@
 #pragma mark - Stories
 
 - (NSArray<RAStory *>*)allStories;
+- (RAStory *)storyForId:(NSString *)iD;
 
 @end

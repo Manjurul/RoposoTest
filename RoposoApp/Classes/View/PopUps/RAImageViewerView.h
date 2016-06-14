@@ -1,5 +1,5 @@
 //
-//  RAStoryViewController.h
+//  RAImageViewerView.h
 //  RoposoApp
 //
 //  Created by Munch on 6/14/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RAStoryViewController : UIViewController
-
-@property(nonatomic, strong) NSString *storyId;
+@interface RAImageViewerView : UIImageView
 
 @end

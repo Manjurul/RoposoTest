@@ -33,6 +33,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"RAStoryViewController"]) {
+        NSIndexPath *indexPath = [_storyCollectionView indexPathForCell:(RAHomeCollectionViewCell *)sender];
+        RAStoryViewController *storyVC = [segue destinationViewController];
+        RAStory *story = self.stories[indexPath.row];
+        [storyVC setStoryId:story.iD];
+    }
+}
+
 /*
 #pragma mark - Navigation
 
@@ -64,12 +73,5 @@
     return cell;
 }
 
-
-#pragma mark - Collection View Delegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    RAStoryViewController *storyVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RAStoryViewController"];
-    [self.navigationController pushViewController:storyVC animated:YES];
-}
 
 @end
