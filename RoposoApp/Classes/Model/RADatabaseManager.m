@@ -7,6 +7,9 @@
 //
 
 #import "RADatabaseManager.h"
+#import "RAUser.h"
+#import "RAStory.h"
+#import "RAConstants.h"
 
 static RADatabaseManager *databaseManager = nil;
 
@@ -106,9 +109,127 @@ static RADatabaseManager *databaseManager = nil;
 #pragma mark - Load
 
 - (void)loadData {
-    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"stories" ofType:@"json"];
-    NSData *fileContent = [NSData dataWithContentsOfFile:jsonPath];
-    NSArray *fileContentArray = [NSJSONSerialization JSONObjectWithData:fileContent options:NSJSONReadingAllowFragments error:nil];
+    NSString *storyAdded = [[NSUserDefaults standardUserDefaults] objectForKey:@"storyAdded"];
+    if(!storyAdded) {
+        NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"stories" ofType:@"json"];
+        NSData *fileContent = [NSData dataWithContentsOfFile:jsonPath];
+        NSArray *fileContentArray = [NSJSONSerialization JSONObjectWithData:fileContent options:NSJSONReadingAllowFragments error:nil];
+        NSArray *users = [fileContentArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"handle != nil"]];
+        NSArray *stories = [fileContentArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"handle = nil"]];
+        [self addUsers:users];
+        [self addStories:stories];
+        [[NSUserDefaults standardUserDefaults] setObject:@"Yes" forKey:@"storyAdded"];
+    }
+}
+
+
+#pragma mark - Users
+
+
+- (void)addUsers:(NSArray *)users
+{
+    for (NSDictionary *theDict in users) {
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:[NSEntityDescription entityForName:@"RAUser" inManagedObjectContext:self.managedObjectContext]];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                                  @"(iD == %@)", theDict[@"id"]];
+        [request setPredicate:predicate];
+        
+        NSError *error = nil;
+        NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+        RAUser *user = nil;
+        
+        if (results.count) {
+            user = [results lastObject];
+        }
+        else {
+            user = [NSEntityDescription insertNewObjectForEntityForName:@"RAUser" inManagedObjectContext:self.managedObjectContext];
+        }
+                
+        VALIDATE_STRING_AND_ASSIGN(user.iD, @"id");
+        VALIDATE_STRING_AND_ASSIGN(user.name, @"username");
+        VALIDATE_STRING_AND_ASSIGN(user.about, @"about");
+        VALIDATE_STRING_AND_ASSIGN(user.image, @"image");
+        VALIDATE_STRING_AND_ASSIGN(user.profileUrl, @"url");
+        VALIDATE_STRING_AND_ASSIGN(user.handle, @"handle");
+        VALIDATE_NUMBER_AND_ASSIGN(user.isFollowing, @"is_following");
+        VALIDATE_NUMBER_AND_ASSIGN(user.followings, @"following");
+        VALIDATE_NUMBER_AND_ASSIGN(user.followers, @"followers");
+        VALIDATE_DATE_AND_ASSIGN(user.createdDate, @"createdOn");
+    }
+    [self saveContext];
+}
+
+
+- (RAUser*)userWithId:(NSString *)iD {
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"RAUser" inManagedObjectContext:self.managedObjectContext]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"(iD == %@)", iD];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    RAUser *user = nil;
+    
+    if (results.count) {
+        user = [results lastObject];
+    }
+    return user;
+}
+
+
+#pragma mark - Stories
+
+
+- (void)addStories:(NSArray *)stories
+{
+    for (NSDictionary *theDict in stories) {
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:[NSEntityDescription entityForName:@"RAStory" inManagedObjectContext:self.managedObjectContext]];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                                  @"(iD == %@)", theDict[@"id"]];
+        [request setPredicate:predicate];
+        
+        NSError *error = nil;
+        NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+        RAStory *story = nil;
+        
+        if (results.count) {
+            story = [results lastObject];
+        }
+        else {
+            story = [NSEntityDescription insertNewObjectForEntityForName:@"RAStory" inManagedObjectContext:self.managedObjectContext];
+        }
+        
+        VALIDATE_STRING_AND_ASSIGN(story.iD, @"id");
+        VALIDATE_STRING_AND_ASSIGN(story.story, @"description");
+        VALIDATE_STRING_AND_ASSIGN(story.verb, @"verb");
+        VALIDATE_STRING_AND_ASSIGN(story.creator, @"db");
+        VALIDATE_STRING_AND_ASSIGN(story.postUrl, @"url");
+        VALIDATE_STRING_AND_ASSIGN(story.imageUrl, @"si");
+        VALIDATE_STRING_AND_ASSIGN(story.type, @"type");
+        VALIDATE_STRING_AND_ASSIGN(story.title, @"title");
+        VALIDATE_NUMBER_AND_ASSIGN(story.isLiked, @"like_flag");
+        VALIDATE_NUMBER_AND_ASSIGN(story.likeCount, @"likes_count");
+        VALIDATE_NUMBER_AND_ASSIGN(story.commentCount, @"comment_count");
+    }
+    [self saveContext];
+}
+
+
+- (NSArray<RAStory *>*)allStories
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"RAStory" inManagedObjectContext:self.managedObjectContext]];
+    [request setReturnsObjectsAsFaults:NO];
+    
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    return results;
 }
 
 @end

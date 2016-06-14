@@ -3,7 +3,7 @@
     <entity name="RAStory" representedClassName="RAStory" syncable="YES">
         <attribute name="commentCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="creator" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iD" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isLiked" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="likeCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -19,7 +19,7 @@
         <attribute name="followers" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="followings" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="handle" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iD" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isFollowing" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>

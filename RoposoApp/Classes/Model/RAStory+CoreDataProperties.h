@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RAStory (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *story;
-@property (nullable, nonatomic, retain) NSString *id;
+@property (nullable, nonatomic, retain) NSString *iD;
 @property (nullable, nonatomic, retain) NSString *verb;
 @property (nullable, nonatomic, retain) NSString *creator;
 @property (nullable, nonatomic, retain) NSString *postUrl;

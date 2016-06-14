@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RAUser (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *name;
-@property (nullable, nonatomic, retain) NSString *id;
+@property (nullable, nonatomic, retain) NSString *iD;
 @property (nullable, nonatomic, retain) NSString *about;
 @property (nullable, nonatomic, retain) NSString *image;
 @property (nullable, nonatomic, retain) NSString *profileUrl;

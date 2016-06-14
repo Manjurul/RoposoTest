@@ -14,7 +14,7 @@
 @implementation RAStory (CoreDataProperties)
 
 @dynamic story;
-@dynamic id;
+@dynamic iD;
 @dynamic verb;
 @dynamic creator;
 @dynamic postUrl;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB3589391D1007400066B0F2 /* RAStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3589381D1007400066B0F2 /* RAStoryViewController.m */; };
 		CB728D231D0EA8C0008C8D5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D221D0EA8C0008C8D5F /* main.m */; };
 		CB728D2C1D0EA8C0008C8D5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB728D2A1D0EA8C0008C8D5F /* Main.storyboard */; };
 		CB728D311D0EA8C0008C8D5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB728D301D0EA8C0008C8D5F /* Assets.xcassets */; };
@@ -20,9 +21,13 @@
 		CB728D551D0EB88F008C8D5F /* RAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D531D0EB88F008C8D5F /* RAUser.m */; };
 		CB728D5A1D0EB8AC008C8D5F /* RAStory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D571D0EB8AC008C8D5F /* RAStory+CoreDataProperties.m */; };
 		CB728D5B1D0EB8AC008C8D5F /* RAStory.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D591D0EB8AC008C8D5F /* RAStory.m */; };
+		CB728D601D0EDD2C008C8D5F /* RAHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D5F1D0EDD2C008C8D5F /* RAHomeCollectionViewCell.m */; };
+		CB728D641D0EDDAD008C8D5F /* RAWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB728D631D0EDDAD008C8D5F /* RAWebImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB3589371D1007400066B0F2 /* RAStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAStoryViewController.h; sourceTree = "<group>"; };
+		CB3589381D1007400066B0F2 /* RAStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAStoryViewController.m; sourceTree = "<group>"; };
 		CB728D1E1D0EA8C0008C8D5F /* RoposoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoposoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB728D221D0EA8C0008C8D5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB728D2B1D0EA8C0008C8D5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,6 +50,11 @@
 		CB728D571D0EB8AC008C8D5F /* RAStory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RAStory+CoreDataProperties.m"; sourceTree = "<group>"; };
 		CB728D581D0EB8AC008C8D5F /* RAStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAStory.h; sourceTree = "<group>"; };
 		CB728D591D0EB8AC008C8D5F /* RAStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAStory.m; sourceTree = "<group>"; };
+		CB728D5C1D0EBCD7008C8D5F /* RAConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RAConstants.h; sourceTree = "<group>"; };
+		CB728D5E1D0EDD2C008C8D5F /* RAHomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAHomeCollectionViewCell.h; sourceTree = "<group>"; };
+		CB728D5F1D0EDD2C008C8D5F /* RAHomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAHomeCollectionViewCell.m; sourceTree = "<group>"; };
+		CB728D621D0EDDAD008C8D5F /* RAWebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAWebImageView.h; sourceTree = "<group>"; };
+		CB728D631D0EDDAD008C8D5F /* RAWebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAWebImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +139,8 @@
 			children = (
 				CB728D461D0EA982008C8D5F /* RAHomeViewController.h */,
 				CB728D471D0EA982008C8D5F /* RAHomeViewController.m */,
+				CB3589371D1007400066B0F2 /* RAStoryViewController.h */,
+				CB3589381D1007400066B0F2 /* RAStoryViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -147,6 +159,7 @@
 				CB728D571D0EB8AC008C8D5F /* RAStory+CoreDataProperties.m */,
 				CB728D581D0EB8AC008C8D5F /* RAStory.h */,
 				CB728D591D0EB8AC008C8D5F /* RAStory.m */,
+				CB728D5C1D0EBCD7008C8D5F /* RAConstants.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,8 +167,28 @@
 		CB728D441D0EA963008C8D5F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CB728D5D1D0ED3FA008C8D5F /* Cells */,
+				CB728D611D0EDD7F008C8D5F /* Images */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CB728D5D1D0ED3FA008C8D5F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CB728D5E1D0EDD2C008C8D5F /* RAHomeCollectionViewCell.h */,
+				CB728D5F1D0EDD2C008C8D5F /* RAHomeCollectionViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CB728D611D0EDD7F008C8D5F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CB728D621D0EDDAD008C8D5F /* RAWebImageView.h */,
+				CB728D631D0EDDAD008C8D5F /* RAWebImageView.m */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB728D4F1D0EB205008C8D5F /* RoposoApp.xcdatamodeld in Sources */,
+				CB3589391D1007400066B0F2 /* RAStoryViewController.m in Sources */,
 				CB728D481D0EA982008C8D5F /* RAHomeViewController.m in Sources */,
 				CB728D4B1D0EB122008C8D5F /* RADatabaseManager.m in Sources */,
 				CB728D541D0EB88F008C8D5F /* RAUser+CoreDataProperties.m in Sources */,
@@ -237,6 +271,8 @@
 				CB728D231D0EA8C0008C8D5F /* main.m in Sources */,
 				CB728D5B1D0EB8AC008C8D5F /* RAStory.m in Sources */,
 				CB728D5A1D0EB8AC008C8D5F /* RAStory+CoreDataProperties.m in Sources */,
+				CB728D641D0EDDAD008C8D5F /* RAWebImageView.m in Sources */,
+				CB728D601D0EDD2C008C8D5F /* RAHomeCollectionViewCell.m in Sources */,
 				CB728D451D0EA963008C8D5F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,6 +422,7 @@
 				CB728D3A1D0EA8C0008C8D5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

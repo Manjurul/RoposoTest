@@ -14,7 +14,7 @@
 @implementation RAUser (CoreDataProperties)
 
 @dynamic name;
-@dynamic id;
+@dynamic iD;
 @dynamic about;
 @dynamic image;
 @dynamic profileUrl;

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class RAUser, RAStory;
 @interface RADatabaseManager : NSObject
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -16,8 +17,15 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 + (RADatabaseManager *)sharedManager;
-
 - (void)saveContext;
+- (void)loadData;
 
+#pragma mark - Users
+
+- (RAUser*)userWithId:(NSString *)iD;
+
+#pragma mark - Stories
+
+- (NSArray<RAStory *>*)allStories;
 
 @end
